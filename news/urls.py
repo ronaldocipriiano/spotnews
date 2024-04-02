@@ -5,12 +5,14 @@ from news.views import (
     news_details,
     categories_form,
     news_form,
-    CategoryViewSet
+    CategoryViewSet,
+    UserViewSet,
 )
 
 
 router = routers.DefaultRouter()
 router.register(r'categories', CategoryViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', home, name='home-page'),
