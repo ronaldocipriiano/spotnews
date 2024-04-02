@@ -1,5 +1,5 @@
 from django import forms
-from .models import Category
+from .models import Category, News
 
 
 class CategoryForm(forms.ModelForm):
@@ -8,4 +8,17 @@ class CategoryForm(forms.ModelForm):
         fields = "__all__"
         labels = {
             'name': 'Nome'
+        }
+
+
+class NewsForm(forms.ModelForm):
+    class Meta:
+        model = News
+        fields = "__all__"
+        labels = {
+            'title': 'Título',
+            'content': 'Conteúdo',
+            'author': 'Autor',
+            'image': 'Imagem',
+            'categories': 'Categorias'
         }
