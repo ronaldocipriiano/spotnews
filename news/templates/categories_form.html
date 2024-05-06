@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <form method="post" action="{% url 'categories-form' %}">
+    <form method="post" action="{% url 'categories-form' %}" class="categories-form">
         {% csrf_token %}
         <label for="name">Nome:</label>
         {{ form.as_p }}
-        <button type="submit">Salvar</button>
+        <button type="submit" class="button">Salvar</button>
     </form>
 {% endblock %}

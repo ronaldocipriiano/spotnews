@@ -7,7 +7,7 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = "__all__"
         labels = {
-            'name': 'Nome'
+            'name': '',
         }
 
 

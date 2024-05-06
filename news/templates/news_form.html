@@ -6,36 +6,51 @@
 {% endblock %}
 
 {% block content %}
-  <section>
+  <section class="news-form">
     <form method="post" action="{% url 'news-form' %}" enctype="multipart/form-data">
         <h1>Formulário para Nova Notícia</h1>
-          {% csrf_token %}    
-              <label for="id_title">Título</label>
-              <input type="text" name="title" maxlength="200" required>
+        {% csrf_token %}    
+        
+        <div class="form-group">
+        <label for="id_title">Título:</label>
+        <input type="text" id="id_title" name="title" maxlength="200" required>
+        </div>
 
-              <label for="id_content">Conteúdo</label>
-              <textarea name="content" rows="4" required></textarea>
+        <div class="form-group">
+        <label for="id_content">Conteúdo:</label>
+        <textarea id="id_content" name="content" rows="4" required></textarea>
+        </div>
 
-              <label for="id_author">Autoria</label>
-              <select name="author" required>
-                  <option value="" disabled selected>Escolha um autor</option>
-                  {% for author in form %}
-                      <option value="{{ author.id }}">{{ author }}</option>
-                  {% endfor %}
-              </select>
+        <div class="form-group">
+        <label for="id_author">Autoria:</label>
+        <select id="id_author" name="author" required>
+            {% for author in form.author.field.choices %}
+                <option value="{{ author.0 }}" style="color: black;">{{ author.1 }}</option>
+            {% endfor %}
+        </select>
+        </div>
 
-              <label for="id_created_at">Criado em</label>
-              <input type="date" name="created_at" required>
+        <div class="form-group">
+        <label for="id_created_at">Criado em:</label>
+        <input type="date" id="id_created_at" name="created_at" required>
+        </div>
 
-              <label for="id_image">URL da Imagem</label>
-              <input type="file" name="image" accept="image/*">
+        <div class="form-group">
+        <label for="id_image">URL da Imagem:</label>
+        <input type="file" id="id_image" name="image" accept="image/*">
+        </div>
 
-              {% for category in categories %}
-                  <input type="checkbox" name="categories" value="{{ category.id }}">
-                  <label for="id_categories_{{ category.id }}">{{ category.name }}</label>
-              {% endfor %}
+        <div id="id_categories" class="news-categories-container">
+            <label>Categorias:</label>
+            {% for category in categories %}
+                <div>
+                    <input type="checkbox" name="categories" value="{{ category.id }}" id="id_categories_{{ category.id }}">
+                    <label for="id_categories_{{ category.id }}">{{ category.name }}</label>
+                </div>
+            {% endfor %}
+        </div>
 
-          <button type="submit">Salvar</button>
-      </form>
+        <button type="submit" class="button">Salvar</button>
+    </form>
   </section>
 {% endblock %}

@@ -128,7 +128,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static/img")]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -143,10 +143,6 @@ if "test" in sys.argv or "pytest" in sys.argv:
     MEDIA_URL = ""
     MEDIA_ROOT = BASE_DIR / "tests"
     STORAGE = {"default": "django.core.files.storage.FileSystemStorage"}
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static/img",
-]
 
 STATIC_TEST_DIR = os.path.join(BASE_DIR, "tests")
 
