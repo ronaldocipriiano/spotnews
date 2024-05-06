@@ -7,17 +7,21 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h1 class="news-title">{{ news.title }}</h1>
-        <p class="news-content">{{ news.content }}</p>
+ <div class="news-details">
+    <img class="news-image" src="{% static news.image.url %}" alt="{{ news.title }}">
+    <h1 class="news-title">{{ news.title }}</h1>
+    <p class="news-content">{{ news.content }}</p>
+    <div class="news-categories-container">
         <span class="news-categories">
             Categorias:
             {% for category in news.categories.all %}
                 {{ category.name }}
             {% endfor %}
-        </span>
+         </span>
+    </div>
+    <div class="news-bottom">
         <span class="news-author">Autor: {{ news.author }}</span>
         <span class="news-date">Data de Criação: {{ news.created_at|date:"d/m/Y" }}</span>
-        <img src="{% static news.image.url %}" alt="{{ news.title }}">
     </div>
+</div>
 {% endblock %}
